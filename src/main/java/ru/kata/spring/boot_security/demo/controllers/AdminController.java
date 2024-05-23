@@ -19,5 +19,9 @@ public class AdminController {
         this.userService = userService;
     }
 
+    @GetMapping()
+    public String test(){
+        return "admin";
+    }
 
 }

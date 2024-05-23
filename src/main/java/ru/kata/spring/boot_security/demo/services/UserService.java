@@ -31,8 +31,8 @@ public class UserService implements UserDetailsService {
     @Autowired
     private RoleRepository roleRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     @Transactional
@@ -42,6 +42,7 @@ public class UserService implements UserDetailsService {
             throw new UsernameNotFoundException("User is not found!");
         }
         return user;
+
     }
 
     public User findUserById(Long userId) {
@@ -59,10 +60,12 @@ public class UserService implements UserDetailsService {
         if (userFromDb != null) {
             return false;
         }
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
+
+
     }
 
     public boolean deleteUser(Long userId) {
